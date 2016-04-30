@@ -21,19 +21,39 @@ class CateController extends Controller
     	$Cate->name = $request->txtCateName;
     	$Cate->alias = changeTitle($request->txtCateName);
     	$Cate->order = $request->txtOrder;
-    	$Cate->parent_id = 1;
+    	$Cate->parent_id = $request->sltParent;
     	$Cate->keywords = $request->txtKeywords;
     	$Cate->description = $request->txtDescription;
     	$Cate->Save();
     	return redirect()->route('admin.cate.getList')->with(["flash_message"=>"Success!! Complete Add Category","flash_level"=>"success"]);
     }
     public function getDelete($id){
-
+        $countParent = Category::where("parent_id",$id)->count();
+        if($countParent>0){
+            return redirect()->route('admin.cate.getList')->with(["flash_message"=>"Error!! Cannot remove, category is parent's other categories","flash_level"=>"danger"]);
+        }else{
+            Category::find($id)->delete();
+            return redirect()->route('admin.cate.getList')->with(["flash_message"=>"Success!! Delete complete","flash_level"=>"success"]);
+        }
     }
     public function getEdit($id){
-
+        $data = Category::findOrFail($id)->toArray();
+        $parent = Category::select('id','name','parent_id')->get()->toArray();
+        return view('admin.cate.edit',compact('data', 'parent', 'id'));
     }
-    public function postEdit(CateRequest $request){
-
+    public function postEdit(CateRequest $request,$id){
+        $this->validate($request,
+            ["txtCateName"=>"required"],
+            ["txtCateName.required"=>"Category Empty"]
+        );
+        $Cate = Category::find($id);
+        $Cate->name = $request->txtCateName;
+        $Cate->alias = changeTitle($request->txtCateName);
+        $Cate->order = $request->txtOrder;
+        $Cate->parent_id = $request->sltParent;
+        $Cate->keywords = $request->txtKeywords;
+        $Cate->description = $request->txtDescription;
+        $Cate->Save();
+        return redirect()->route('admin.cate.getList')->with(["flash_message"=>"Success!! Complete Update Category","flash_level"=>"success"]);
     }
 }

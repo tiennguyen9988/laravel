@@ -25,6 +25,16 @@
 
     <!-- DataTables Responsive CSS -->
     <link href="{{ url('public/admin/bower_components/datatables-responsive/css/dataTables.responsive.css') }}" rel="stylesheet">
+
+    <!-- config global -->
+    <script>
+        baseURL = "{!! url('/') !!}";
+    </script>
+
+    <!-- ckeditor -->
+    <script src="{{ url('public/admin/js/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ url('public/admin/js/ckfinder/ckfinder.js') }}"></script>
+    <script src="{{ url('public/admin/js/func_ckfinder.js') }}"></script>
 </head>
 
 <body>
@@ -169,7 +179,8 @@
 
     <!-- DataTables JavaScript -->
     <script src="{{ url('public/admin/bower_components/DataTables/media/js/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ url('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>    
+    <!-- global -->
     <script src="{{ url('public/admin/js/myscript.js') }}"></script>
 </body>
 

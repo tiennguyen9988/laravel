@@ -28,7 +28,7 @@
                             ?>
                         @endif
                     </td>
-                    <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{!! URL::route('admin.cate.getDelete',$value["id"]) !!}"> Delete</a></td>
+                    <td class="center"><i class="fa fa-trash-o fa-fw"></i><a onclick="return fnConfirm();" href="{!! URL::route('admin.cate.getDelete',$value["id"]) !!}"> Delete</a></td>
                     <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route('admin.cate.getEdit',$value["id"]) !!}">Edit</a></td>
                 </tr>
             @endforeach            
