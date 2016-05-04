@@ -19,6 +19,6 @@ class Product extends Model
     }
 
     public function pimages(){
-    	return $this->hasMany('App\ProductImage')
+    	return $this->hasMany('App\ProductImage');
     }
 }
