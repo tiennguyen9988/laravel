@@ -26,7 +26,7 @@ class ProductRequest extends Request
         return [
             'sltParent' => 'required',
             'txtName' => 'required|unique:products,name',
-            'fImages' => 'required|image',
+            'fImages' => 'required|image|mimes:jpeg,jpg,png,bmp,gif,svg',
         ];
     }
     public function messages(){
@@ -34,7 +34,7 @@ class ProductRequest extends Request
             'sltParent.required' => 'Please select category',
             'txtName.required' => 'Please enter name',
             'txtName.unique' => 'Product name exist',
-            'fImages.unique' => 'Please select image',
+            'fImages.required' => 'Please select image',
             'fImages.image' => 'This file is not Images',
         ];
     }
