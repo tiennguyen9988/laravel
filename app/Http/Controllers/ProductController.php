@@ -77,33 +77,41 @@ class ProductController extends Controller
             }            
         }
     }
-    public function postEdit($id, Request $request){
-        // $fImagesName = $request->file('fImages')->getClientOriginalName();
-        $product = Product::find($id);
+    public function postEdit($id, Request $request){        
+        $product = Product::find($id);                
         $product->name = Request::input('txtName');
         $product->alias = changeTitle(Request::input('txtName'));
         $product->price = Request::input('txtPrice');
         $product->intro = Request::input('txtIntro');
         $product->content = Request::input('txtContent');
-        // $product->image = $fImagesName;
         $product->keywords = Request::input('txtKeywords');
         $product->description = Request::input('txtDescription');
         $product->user_id = 1;
         $product->cat_id = Request::input('sltParent');
-        // if(Input::hasFile('fImages')){$request->file('fImages')->move('resources/upload/',$fImagesName);}
-        $product->save();
-        // $productId = $product->id;              
-        // if(Input::hasFile('fProductDetail')){
-        //     foreach (Input::file('fProductDetail') as $file) {
-        //         $productImg = new ProductImage;
-        //         if(isset($file)){                    
-        //             $productImg->image = $file->getClientOriginalName();
-        //             $productImg->product_id = $productId;
-        //             $file->move('resources/upload/detail/',$file->getClientOriginalName());
-        //             $productImg->save();
-        //         }
-        //     }
-        // } 
-        return redirect()->route('admin.product.getList')->with(["flash_message"=>"Success!! Complete Add Product","flash_level"=>"success"]);   
+        if(!empty(Request::file('fImages'))){
+            $fImagesName = Request::file('fImages')->getClientOriginalName();
+            $product->image = $fImagesName;
+            $fImagesCurrent = 'resources/upload/'.Request::input('fImagesCurrent');            
+            if(File::exists($fImagesCurrent)){
+                File::delete($fImagesCurrent);
+            }
+            Request::file('fImages')->move('resources/upload/',$fImagesName);
+        }else{
+            echo "Không có file";
+        }
+        $product->save();    
+        
+        if(!empty(Request::file('fProductDetail'))){
+            foreach (Request::file('fProductDetail') as $file) {
+                $productImg = new ProductImage;
+                if(isset($file)){                    
+                    $productImg->image = $file->getClientOriginalName();
+                    $productImg->product_id = $id;
+                    $file->move('resources/upload/detail/',$file->getClientOriginalName());
+                    $productImg->save();
+                }
+            }
+        }
+        return redirect()->route('admin.product.getList')->with(["flash_message"=>"Success!! Complete Update Product","flash_level"=>"success"]);   
     }
 }

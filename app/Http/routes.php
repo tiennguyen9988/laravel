@@ -32,4 +32,12 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::post('edit/{id}',['as'=>'admin.product.postEdit','uses'=>'ProductController@postEdit']);
 		Route::post('delimg/{id}',['as'=>'admin.product.postDelImg','uses'=>'ProductController@postDelImg']);
 	});
+	Route::group(['prefix'=>'user'],function(){
+		Route::get('add',['as'=>'admin.user.getAdd','uses'=>'UserController@getAdd']);
+		Route::post('add',['as'=>'admin.user.postAdd','uses'=>'UserController@postAdd']);
+		Route::get('list',['as'=>'admin.user.getList','uses'=>'UserController@getList']);
+		Route::get('delete/{id}',['as'=>'admin.user.getDelete','uses'=>'UserController@getDelete']);
+		Route::get('edit/{id}',['as'=>'admin.user.getEdit','uses'=>'UserController@getEdit']);
+		Route::post('edit/{id}',['as'=>'admin.user.postEdit','uses'=>'UserController@postEdit']);		
+	});
 });

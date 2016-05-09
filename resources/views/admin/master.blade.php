@@ -96,10 +96,10 @@
                             <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Category<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List Category</a>
+                                    <a href="{!! URL::route('admin.cate.getList') !!}">List Category</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Category</a>
+                                    <a href="{!! URL::route('admin.cate.getAdd') !!}">Add Category</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -108,10 +108,10 @@
                             <a href="#"><i class="fa fa-cube fa-fw"></i> Product<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="#">List Product</a>
+                                    <a href="{!! URL::route('admin.product.getList') !!}">List Product</a>
                                 </li>
                                 <li>
-                                    <a href="#">Add Product</a>
+                                    <a href="{!! URL::route('admin.product.getAdd') !!}">Add Product</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->

@@ -43,6 +43,7 @@
             <div class="form-group">
                 <label>Images</label>
                 <input type="file" name="fImages">
+                <input type="hidden" name="fImagesCurrent" value="{!! old('fImagesCurrent',isset($product['image'])?$product['image']:null) !!}">
             </div>
             <div class="form-group">
                 <label>Product Keywords</label>
