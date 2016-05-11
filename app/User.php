@@ -15,6 +15,8 @@ class User extends Authenticatable
         'username', 'email', 'password', 'level'
     ];
 
+    public $timestamps = true;
+    
     /**
      * The attributes that should be hidden for arrays.
      *

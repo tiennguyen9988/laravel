@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', 'HomeController@index');
+Route::auth();
+
 Route::group(['prefix'=>'admin'],function(){
 	Route::group(['prefix'=>'cate'],function(){
 		Route::get('list',['as'=>'admin.cate.getList','uses'=>'CateController@getList']);
@@ -41,3 +44,4 @@ Route::group(['prefix'=>'admin'],function(){
 		Route::post('edit/{id}',['as'=>'admin.user.postEdit','uses'=>'UserController@postEdit']);		
 	});
 });
+

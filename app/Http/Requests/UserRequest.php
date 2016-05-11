@@ -24,13 +24,23 @@ class UserRequest extends Request
     public function rules()
     {
         return [
-            
+            'txtUser' => 'required|unique:users,username',
+            'txtPass' => 'required',
+            'txtRePass' => 'required|same:txtPass',
+            'txtEmail' => 'required|email|unique:users,email'
         ];
     }
-    public function message()
+    public function messages()
     {
         return [
-            
+            'txtUser.required' => "Username empty",
+            'txtUser.unique' => 'Username exist',
+            'txtPass.required' => 'Password empty',
+            'txtRePass.required' => 'Repassword empty',
+            'txtRePass.same' => 'Repassword not correct',
+            'txtEmail.required' => 'Email empty',
+            'txtEmail.email' => 'Is not email adress',
+            'txtEmail.unique' => 'Email address exist'
         ];
     }
 }
