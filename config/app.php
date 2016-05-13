@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://laravel.com/'),
+    'url' => env('APP_URL', 'http://laravel_local.com/'),
 
     /*
     |--------------------------------------------------------------------------

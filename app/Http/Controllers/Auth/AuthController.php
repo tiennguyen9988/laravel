@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
-use Validator;
+use Validator, Hash, Auth;
+use App\Http\Requests\LoginRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
-
 class AuthController extends Controller
 {
     /*
@@ -69,7 +69,31 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+    /**
+     * Handle an authentication attempt.
+     *
+     * @return Response
+     */
+    public function authenticate()
+    {
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            // Authentication passed...
+            return redirect()->intended('dashboard');
+        }
+    }
+
     public function showLoginForm(){
-        return view('admin.login');
+        return view('admin.auth.login');
+    }
+    public function postLogin(LoginRequest $request){
+        $login = array(
+            'username' => $request->username, 
+            'password' => $request->password
+        );
+        if (Auth::attempt($login)) {
+            return redirect()->route('admin.cate.getList');
+        }else{
+            return redirect()->back();
+        }
     }
 }

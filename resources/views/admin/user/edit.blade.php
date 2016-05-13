@@ -3,7 +3,9 @@
 @section('action','Edit')
 @section('content')
 <div class="col-lg-7" style="padding-bottom:120px">
+@include('admin.blocks.error')
     <form action="" method="POST">
+        <input type="hidden" name="_token" value="{!! csrf_token() !!}">    
         <div class="form-group">
             <label>Username</label>
             <input class="form-control" name="txtUser" value="{!! old('txtUser',isset($user['username'])?$user['username']:null) !!}" disabled />
@@ -22,12 +24,16 @@
         </div>
         <div class="form-group">
             <label>User Level</label>            
+            @if ($user['level'] <= 1)
             <label class="radio-inline">
-                <input name="rdoLevel" value="2" @if ($user['level']==1) checked="" @endif type="radio">Root
+                <input name="rdoLevel" value="1" @if ($user['level']==1) checked="" @endif type="radio">Root
             </label>
+            @endif
+            @if ($user['level'] <= 2)
             <label class="radio-inline">
                 <input name="rdoLevel" value="2" @if ($user['level']==2) checked="" @endif type="radio">Admin
             </label>
+            @endif
             <label class="radio-inline">
                 <input name="rdoLevel" value="3" @if ($user['level']==3) checked="" @endif type="radio">Member
             </label>

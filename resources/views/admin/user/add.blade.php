@@ -24,12 +24,16 @@
         </div>
         <div class="form-group">
             <label>User Level</label>
+            @if ($userCurrentLogin['level'] <= 1)
             <label class="radio-inline">
-                <input name="rdoLevel" value="1" checked="" type="radio">Root
+                <input name="rdoLevel" value="1" type="radio">Root
             </label>
+            @endif
+            @if ($userCurrentLogin['level'] <= 2)
             <label class="radio-inline">
-                <input name="rdoLevel" value="2" checked="" type="radio">Admin
+                <input name="rdoLevel" value="2" type="radio">Admin
             </label>
+            @endif
             <label class="radio-inline">
                 <input name="rdoLevel" value="3" type="radio">Member
             </label>

@@ -6,7 +6,7 @@ use App\Http\Requests\ProductRequest;
 use App\Category;
 use App\Product;
 use App\ProductImage;
-use Request, Input, File;
+use Request, Input, File, Auth;
 
 class ProductController extends Controller
 {
@@ -25,7 +25,7 @@ class ProductController extends Controller
     	$product->image = $fImagesName;
     	$product->keywords = $request->txtKeywords;
     	$product->description = $request->txtDescription;
-    	$product->user_id = 1;
+    	$product->user_id = Auth::user()->id;
     	$product->cat_id = $request->sltParent;
     	if(Input::hasFile('fImages')){$request->file('fImages')->move('resources/upload/',$fImagesName);}
         $product->save();
@@ -86,7 +86,7 @@ class ProductController extends Controller
         $product->content = Request::input('txtContent');
         $product->keywords = Request::input('txtKeywords');
         $product->description = Request::input('txtDescription');
-        $product->user_id = 1;
+        $product->user_id = Auth::user()->id;
         $product->cat_id = Request::input('sltParent');
         if(!empty(Request::file('fImages'))){
             $fImagesName = Request::file('fImages')->getClientOriginalName();
