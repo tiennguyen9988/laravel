@@ -38,10 +38,10 @@ class CateController extends Controller
     }
     public function getEdit($id){
         $data = Category::findOrFail($id)->toArray();
-        $parent = Category::select('id','name','parent_id')->get()->toArray();
+        $parent = Category::select('id','name','parent_id')->where('id','<>',$id)->get()->toArray();
         return view('admin.cate.edit',compact('data', 'parent', 'id'));
     }
-    public function postEdit(CateRequest $request,$id){
+    public function postEdit(Request $request,$id){
         $this->validate($request,
             ["txtCateName"=>"required"],
             ["txtCateName.required"=>"Category Empty"]

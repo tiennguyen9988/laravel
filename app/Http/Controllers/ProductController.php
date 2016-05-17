@@ -27,7 +27,7 @@ class ProductController extends Controller
     	$product->description = $request->txtDescription;
     	$product->user_id = Auth::user()->id;
     	$product->cat_id = $request->sltParent;
-    	if(Input::hasFile('fImages')){$request->file('fImages')->move('resources/upload/',$fImagesName);}
+    	if(Input::hasFile('fImages')){$request->file('fImages')->move('resources/upload/',$fImagesName);}        
         $product->save();
         $productId = $product->id;              
         if(Input::hasFile('fProductDetail')){
