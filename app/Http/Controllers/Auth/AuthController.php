@@ -92,7 +92,7 @@ class AuthController extends Controller
             'password' => $request->password
         );
         if (Auth::attempt($login)) {
-            return redirect()->route('admin.cate.getList');
+            return redirect()->route('admin');
         }else{
             return redirect()->back();
         }

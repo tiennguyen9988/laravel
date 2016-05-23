@@ -3,24 +3,28 @@
   <div class="container">
     <div class="row">
       <div class="span3 aboutus">
-        <h2>About Us </h2>
-        <p> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. <br>
-          <br>
-          t has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+        <h2>Giới thiệu </h2>
+        <p>
+          Những sản phẩm phong phú về mẫu mã và số lượng với giá thành tốt nhất là thương hiệu của chúng tôi.
+        </p>
       </div>
       <div class="span3 contact">
-        <h2>Contact Us </h2>
+        <h2>Liên hệ </h2>
         <ul>
-          <li class="phone"> +123 456 7890, +123 456 7890</li>
-          <li class="mobile"> +123 456 7890, +123 456 78900</li>
-          <li class="email"> test@test.com</li>
-          <li class="email"> test@test.com</li>
+          <li class="phone">01668896667</li>
+          <li class="mobile">01668896667</li>
+          <li class="email"><a href="mailto:binhtien2013@gmail.com?Subject=Phản%20hồi" target="_top">binhtien2013@gmail.com</a></li>
         </ul>
       </div>
       <div class="span3 twitter">
-        <h2>Twitter </h2>
-        <div id="twitter">
-        </div>
+        <h2>Cam kết </h2>
+        <p>
+          <p>- Sản phẩm chính hiệu</p>
+          <p>- Giá thành tốt nhất</p>
+          <p>- Dịch vụ chu đáo</p>
+          <p>- Giao hàng tận nơi</p>
+          <p>- Không phí phát sinh ngoài đơn hàng</p>
+        </p>
       </div>
     </div>
   </div>

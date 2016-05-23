@@ -23,8 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $product = DB::table('products')->select('id','name','image','price','alias')->orderBy('id','DESC')->skip(0)->take(4)->get();
-        return view('user.pages.home',compact('product'));
+        $mostViewProduct = DB::table('products')->select('id','name','image','price','alias')->orderBy('id','ASC')->skip(0)->take(20)->get();
+        $newGestProduct = DB::table('products')->select('id','name','image','price','alias')->orderBy('id','DESC')->skip(0)->take(20)->get();
+        return view('user.pages.home',compact('mostViewProduct','newGestProduct'));
     }
     public function loaisanpham($id)
     {
